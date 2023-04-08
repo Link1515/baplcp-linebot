@@ -1,5 +1,5 @@
 import { MessageEvent } from '@line/bot-sdk'
-import { client } from '../linebot'
+import { client } from '../plugins/linebot'
 
 export const replyText = (
   replyToken: MessageEvent['replyToken'],
