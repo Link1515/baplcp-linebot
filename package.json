@@ -5,17 +5,21 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.ts",
+    "http": "ngrok http 3000",
     "start": "tsc && node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@line/bot-sdk": "^7.5.2",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^18.15.10",
+    "ngrok": "^4.3.3",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2"
