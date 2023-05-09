@@ -3,11 +3,11 @@ import { middleware, WebhookEvent } from '@line/bot-sdk'
 import { middlewareConfig } from '../plugins/linebot'
 import { eventHandler } from '../handlers/eventHandler'
 
-const router = express.Router()
+export const webhookRoute = express.Router()
 
-router.use(middleware(middlewareConfig))
+webhookRoute.use(middleware(middlewareConfig))
 
-router.post('/', async (req, res): Promise<Response> => {
+webhookRoute.post('/', async (req, res): Promise<Response> => {
   const events: WebhookEvent[] = req.body.events
 
   // Process all of the received events asynchronously.
@@ -34,5 +34,3 @@ router.post('/', async (req, res): Promise<Response> => {
     results
   })
 })
-
-export default router

@@ -4,6 +4,13 @@ import { textHandler } from './textHandler'
 import fixedMessage from '../data/fixedMessage.json'
 
 export const eventHandler = (event: WebhookEvent) => {
+  if (
+    event.source.type === 'group' &&
+    event.source.groupId !== process.env.GROUP_ID
+  ) {
+    return
+  }
+
   const { type: eventType } = event
 
   switch (eventType) {
@@ -13,8 +20,6 @@ export const eventHandler = (event: WebhookEvent) => {
       switch (message.type) {
         case 'text':
           return textHandler(message, event.replyToken, event.source)
-        default:
-          return console.log(`Unhandle event type: ${JSON.stringify(message)}`)
       }
     }
 

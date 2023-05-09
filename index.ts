@@ -1,20 +1,15 @@
 import express from 'express'
 import 'dotenv/config'
-import { client } from './plugins/linebot'
 
-import webhookRoute from './routes/webhookRoute'
+import { webhookRoute, sendRoute } from './routes'
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.use('/webhook', webhookRoute)
+app.use(express.json())
 
-if (process.env.GROUP_ID) {
-  client.pushMessage(process.env.GROUP_ID, {
-    type: 'text',
-    text: 'test123'
-  })
-}
+app.use('/webhook', webhookRoute)
+app.use('/send', sendRoute)
 
 app.use('*', (_, res) => {
   res.status(404).send('not found')
