@@ -1,14 +1,17 @@
 import express from 'express'
 import 'dotenv/config'
 
+import { reloadSchedule } from './schedule'
 import { webhookRoute, sendRoute } from './routes'
+
+reloadSchedule()
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.use(express.json())
-
 app.use('/webhook', webhookRoute)
+
+app.use(express.json())
 app.use('/send', sendRoute)
 
 app.use('*', (_, res) => {
