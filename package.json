@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "http": "ngrok http 3000",
-    "start": "tsc && node dist/index.js",
+    "build": "tsc",
+    "start": "node dist/index.js",
     "db:type": "prisma generate"
   },
   "keywords": [],
