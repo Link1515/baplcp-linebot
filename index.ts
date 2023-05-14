@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import 'dotenv/config'
 
 import { reloadSchedule } from './schedule'
@@ -11,7 +12,9 @@ const PORT = process.env.PORT || 3000
 
 app.use('/webhook', webhookRoute)
 
+app.use(cors({ origin: process.env.ALLOW_ORIGIN }))
 app.use(express.json())
+
 app.use('/send', sendRoute)
 
 app.use('*', (_, res) => {
