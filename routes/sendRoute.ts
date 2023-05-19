@@ -18,7 +18,7 @@ sendRoute.post('/', async (req, res) => {
 
     const { message } = bodyValidator.parse(req.body)
 
-    sendMessageToGroup(message)
+    await sendMessageToGroup(message)
 
     return res.status(200).send('OK')
   } catch (error) {
